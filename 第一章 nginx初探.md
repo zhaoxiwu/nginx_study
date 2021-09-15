@@ -1,7 +1,7 @@
-Nginx初探
+# Nginx初探
 
 
-0、基本资料：
+## 0、基本资料：
 
 
 官网：http://nginx.org/
@@ -29,19 +29,19 @@ io模型：异步非阻塞
 
 
 
-1、配置结构：
+## 1、配置结构：
 
 ![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/2.png)
 
 
-2、整体架构
+## 2、整体架构
 
 ![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/3.png)
 
 
-3、源码结构
+## 3、源码结构
 
-目录结构：
+### 目录结构：
 
 
 ![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/4.png)
@@ -85,13 +85,13 @@ io模型：异步非阻塞
 └── os          主要是对各种不同体系统结构所提供的系统函数的封装，对外提供统一的系统调用接
 
 
-源码阅读：
+### 源码阅读：
 
 nginx编程语言是c，工程量也比较大尽量用一些IDE来阅读源码，更方便查看函数调用关系。如果用vim可以用ctags -R 来生成函数调用关系，也可以实现各种跳转。
 
 具体方法: 在src 目录下执行 ctags -R， 当前目录会升个一个tags文件，然后再通目录打开想看的文件即可，当需要查看引用的函数具体实现时同时按下 ctrl+] ，回退用ctrl+t
 
-模块划分：
+### 模块划分：
 
 Event module： 事件处理机制框架，例如timer，io多路复用等
 
@@ -104,15 +104,15 @@ Upstream：nginx作为反向代理与上游服务交互的模块，也是handler
 
 Load Balancer：配合Upstream模块一起工作，通过各种算法获取上游服务器地址，同upstream模块，很多开发者也会根据业务需求自己开发一些LoadBalance算法。
 
-4、进程管理
+## 4、进程管理
 
 ![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/5.png)
 
 
 
-5、Phase handler
+## 5、Phase handler
 
-处理流程
+### 处理流程
 
 1. 初始化HTTP Request（读取来自客户端的数据，生成HTTP Request对象）。
 
@@ -122,7 +122,7 @@ Load Balancer：配合Upstream模块一起工作，通过各种算法获取上�
 
 ![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/6.png)
 
-多阶段处理请求：
+### 多阶段处理请求：
 
 nginx实际把请求处理流程划分为了11个阶段，这样划分的原因是将请求的执行逻辑细分，各阶段按照处理时机定义了清晰的执行语义，开发者可以很容易分辨自己需要开发的模块应该定义在什么阶段，下面介绍一下各阶段:
 
@@ -153,10 +153,10 @@ NGX_HTTP_CONTENT_PHASE:内容生成阶段，该阶段产生响应，并发送到
 
 NGX_HTTP_LOG_PHASE:日志记录阶段，该阶段记录访问日志。LOG阶段和其他阶段的不同点有两个，一是执行点是在ngx_http_free_request中，二是这个阶段的所有handler都会被执行。
 
-6、Output Filter
+## 6、Output Filter
 
 header filter， body Filter
 
-7、Upstream&LoadBalance
+## 7、Upstream&LoadBalance
 
 ![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/8.png)
