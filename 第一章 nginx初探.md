@@ -8,17 +8,18 @@ io模型：异步非阻塞
 进程间通信：信号量，共享内存
 忌讳：阻塞的系统调用
 市场占有率：36.48%
-
+![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/1.png)
 
 1、配置结构：
-
+![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/2.png)
 
 2、整体架构
+![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/3.png)
 
 
 3、源码结构
 目录结构：
-
+![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/4.png)
 .
 ├── auto            自动检测系统环境以及编译相关的脚本
 │   ├── cc          关于编译器相关的编译选项的检测脚本
@@ -51,6 +52,7 @@ Upstream：nginx作为反向代理与上游服务交互的模块，也是handler
 Load Balancer：配合Upstream模块一起工作，通过各种算法获取上游服务器地址，同upstream模块，很多开发者也会根据业务需求自己开发一些LoadBalance算法。
 
 4、进程管理
+![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/5.png)
 
 
 
@@ -59,13 +61,13 @@ Load Balancer：配合Upstream模块一起工作，通过各种算法获取上�
 1. 初始化HTTP Request（读取来自客户端的数据，生成HTTP Request对象）。
 2. 处理请求行&请求头，调用与此请求（URL或者Location）关联的handler。
 3. 处理请求体，依次调用各phase handler进行处理。
-
+![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/6.png)
 
 多阶段处理请求：
 nginx实际把请求处理流程划分为了11个阶段，这样划分的原因是将请求的执行逻辑细分，各阶段按照处理时机定义了清晰的执行语义，开发者可以很容易分辨自己需要开发的模块应该定义在什么阶段，下面介绍一下各阶段:
 
 
-
+![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/7.png)
 NGX_HTTP_POST_READ_PHASE:  接收完请求头之后的第一个阶段，它位于uri重写之前，实际上很少有模块会注册在该阶段，默认的情况下，该阶段被跳过；
 
 NGX_HTTP_SERVER_REWRITE_PHASE: server级别的uri重写阶段，也就是该阶段执行处于server块内，location块外的重写指令，前面的章节已经说明在读取请求头的过程中nginx会根据host及端口找到对应的虚拟主机配置；
@@ -89,3 +91,4 @@ NGX_HTTP_LOG_PHASE:日志记录阶段，该阶段记录访问日志。LOG阶段�
 header filter， body Filter
 
 7、Upstream&LoadBalance
+![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/8.png)
