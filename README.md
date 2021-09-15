@@ -7,4 +7,4 @@
 
 
 
-![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/2.png)
+![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/3.png)
