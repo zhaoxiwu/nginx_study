@@ -1,25 +1,51 @@
 Nginx初探
+
+
 0、基本资料：
+
+
 官网：http://nginx.org/
+
+
 源码：https://github.com/nginx/nginx.git
+
+
 语音：C
+
+
 模式：多进程
+
+
 io模型：异步非阻塞
+
+
 进程间通信：信号量，共享内存
+
 忌讳：阻塞的系统调用
+
 市场占有率：36.48%
+
 ![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/1.png)
 
+
+
 1、配置结构：
+
 ![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/2.png)
 
+
 2、整体架构
+
 ![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/3.png)
 
 
 3、源码结构
+
 目录结构：
+
+
 ![image](https://github.com/zhaoxiwu/nginx_study/blob/main/pic/4.png)
+
 .
 ├── auto            自动检测系统环境以及编译相关的脚本
 │   ├── cc          关于编译器相关的编译选项的检测脚本
