@@ -147,7 +147,7 @@ NGX_HTTP_POST_ACCESS_PHASE:访问权限控制的后一阶段，该阶段根据�
 
 NGX_HTTP_TRY_FILES_PHASE:try_files指令的处理阶段，如果没有配置try_files指令，则该阶段被跳过；该阶段也不能注册handler。
 
-NGX_HTTP_CONTENT_PHASE:内容生成阶段，该阶段产生响应，并发送到客户端；只执行一个content_handler
+NGX_HTTP_CONTENT_PHASE:内容生成阶段，该阶段产生响应，并发送到客户端；如果有多个content phase handler，则依次执行，直到某个返回NGX_OK或NGX_ERROR
 
 --output filter --
 
