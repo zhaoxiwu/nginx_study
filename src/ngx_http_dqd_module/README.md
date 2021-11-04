@@ -8,18 +8,13 @@ just for fun~
 
 
 
-curl -i http://127.0.0.1:8080/dqd
+	curl -i http://127.0.0.1:8080/dqd
+	HTTP/1.1 200 OK
+	Server: nginx/1.8.1
+	Date: Thu, 04 Nov 2021 02:39:35 GMT
+	Content-Type: text/html
+	Content-Length: 25
+	Connection: keep-alive
 
-HTTP/1.1 200 OK
-
-Server: nginx/1.8.1
-
-Date: Thu, 04 Nov 2021 02:39:35 GMT
-
-Content-Type: text/html
-
-Content-Length: 25
-
-Connection: keep-alive
-
-Dongqiudi Visited Times:1
+	
+	Dongqiudi Visited Times:1
