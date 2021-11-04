@@ -130,7 +130,7 @@ ngx_addon_name=ngx_http_dqd_filter_module
 HTTP_AUX_FILTER_MODULES="$HTTP_AUX_FILTER_MODULES ngx_http_dqd_filter_module"
 NGX_ADDON_SRCS="$NGX_ADDON_SRCS $ngx_addon_dir/ngx_http_dqdfilter_module.c"
 ```
-编写config文件是需要注意：filter module 需要加到HTTP_AUX_FILTER_MODULES里面，这个跟ngx_http_xxx_module 不一样。还有一种filter模块：HTTP_FILTER_MODULES， 其实ngx内置的filter模块都在这个里面，官方不建议三方开发的filter module模块挂载到这个上面。主要是这个里面的module都支持subrequests（Re: Wha difference between HTTP_FILTER_MODULES and HTTP_AUX_FILTER_MODULES is it?）。 其实加到HTTP_FILTER_MODULES里面也是可以的，感兴趣的可以试试。
+编写config文件是需要注意：filter module 需要加到HTTP_AUX_FILTER_MODULES里面，这个跟ngx_http_xxx_module 不一样。还有一种filter模块：HTTP_FILTER_MODULES， 其实ngx内置的filter模块都在这个里面，官方不建议三方开发的filter module模块挂载到这个上面。主要是这个里面的module都支持subrequests（Re: Wha difference between HTTP_FILTER_MODULES and HTTP_AUX_FILTER_MODULES is it? https://forum.nginx.org/read.php?2,152699,152717）。 其实加到HTTP_FILTER_MODULES里面也是可以的，感兴趣的可以试试。
 
 看一下nginx的编译脚本这块的实现逻辑：
 ```
